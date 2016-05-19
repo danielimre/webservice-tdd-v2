@@ -11,6 +11,7 @@
     <module>client</module>
     <module>service</module>
     <module>web</module>
+    <module>functional-tests</module>
   </modules>
   <properties>
     <main.basedir>${project.basedir}</main.basedir>
@@ -20,6 +21,7 @@
     <java-version>1.8</java-version>
     <!-- tests -->
     <skip.unit.tests>false</skip.unit.tests>
+    <skip.functional.tests>false</skip.functional.tests>
     <!-- checkstyle -->
     <checkstyle.skip>false</checkstyle.skip>
     <checkstyle.basedir>${main.basedir}/build</checkstyle.basedir>
@@ -48,6 +50,13 @@
       <id>runapp</id>
       <properties>
         <skip.cargo.run>false</skip.cargo.run>
+        <skip.functional.tests>true</skip.functional.tests>
+      </properties>
+    </profile>
+    <profile>
+      <id>no-functional-tests</id>
+      <properties>
+        <skip.functional.tests>true</skip.functional.tests>
       </properties>
     </profile>
   </profiles>
@@ -129,6 +138,44 @@
           <groupId>org.jacoco</groupId>
           <artifactId>jacoco-maven-plugin</artifactId>
           <version>0.7.4.201502262128</version>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.cargo</groupId>
+          <artifactId>cargo-maven2-plugin</artifactId>
+          <version>1.4.8</version>
+          <configuration>
+            <container>
+              <containerId>tomcat7x</containerId>
+              <zipUrlInstaller>
+                <url>http://archive.apache.org/dist/tomcat/tomcat-7/v7.0.61/bin/apache-tomcat-7.0.61.zip</url>
+                <downloadDir>${main.basedir}/build/downloads</downloadDir>
+                <extractDir>${project.build.directory}/extracts</extractDir>
+              </zipUrlInstaller>
+              <output>${project.build.directory}/tomcat7x/container.log</output>
+              <append>false</append>
+              <log>${project.build.directory}/tomcat7x/cargo.log</log>
+              <systemProperties>
+                <LOG_CONFIG_LOCATION>/WEB-INF/classes/conf/logback/logback.xml</LOG_CONFIG_LOCATION>
+              </systemProperties>
+            </container>
+            <configuration>
+              <properties>
+                <cargo.servlet.port>${cargo.server.port}</cargo.servlet.port>
+                <cargo.tomcat.ajp.port>${cargo.ajp.port}</cargo.tomcat.ajp.port>
+                <cargo.rmi.port>${cargo.rmi.port}</cargo.rmi.port>
+              </properties>
+            </configuration>
+            <deployables>
+              <deployable>
+                <groupId>daniel.imre.training.tdd.webservice</groupId>
+                <artifactId>web</artifactId>
+                <type>war</type>
+                <properties>
+                  <context>ROOT</context>
+                </properties>
+              </deployable>
+            </deployables>
+          </configuration>
         </plugin>
       </plugins>
     </pluginManagement>
@@ -437,6 +484,26 @@
         <artifactId>hamcrest-all</artifactId>
         <version>1.3</version>
         <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>com.jayway.restassured</groupId>
+        <artifactId>rest-assured</artifactId>
+        <version>2.4.0</version>
+        <scope>test</scope>
+        <exclusions>
+          <exclusion>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-core</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-library</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+          </exclusion>
+        </exclusions>
       </dependency>
     </dependencies>
   </dependencyManagement>
