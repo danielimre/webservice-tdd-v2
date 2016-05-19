@@ -37,7 +37,20 @@
     <logback.version>1.1.2</logback.version>
     <slf4j.version>1.7.6</slf4j.version>
     <spring.version>4.2.0.RELEASE</spring.version>
+    <!-- cargo -->
+    <cargo.server.port>9876</cargo.server.port>
+    <cargo.rmi.port>9875</cargo.rmi.port>
+    <cargo.ajp.port>9874</cargo.ajp.port>
+    <skip.cargo.run>true</skip.cargo.run>
   </properties>
+  <profiles>
+    <profile>
+      <id>runapp</id>
+      <properties>
+        <skip.cargo.run>false</skip.cargo.run>
+      </properties>
+    </profile>
+  </profiles>
   <build>
     <pluginManagement>
       <plugins>

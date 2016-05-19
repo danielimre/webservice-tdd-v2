@@ -35,6 +35,56 @@
           </webResources>
         </configuration>
       </plugin>
+      <plugin>
+        <groupId>org.codehaus.cargo</groupId>
+        <artifactId>cargo-maven2-plugin</artifactId>
+        <version>1.4.8</version>
+        <configuration>
+          <container>
+            <containerId>tomcat7x</containerId>
+            <zipUrlInstaller>
+              <url>http://archive.apache.org/dist/tomcat/tomcat-7/v7.0.61/bin/apache-tomcat-7.0.61.zip</url>
+              <downloadDir>${main.basedir}/build/downloads</downloadDir>
+              <extractDir>${project.build.directory}/extracts</extractDir>
+            </zipUrlInstaller>
+            <output>${project.build.directory}/tomcat7x/container.log</output>
+            <append>false</append>
+            <log>${project.build.directory}/tomcat7x/cargo.log</log>
+            <systemProperties>
+              <LOG_CONFIG_LOCATION>/WEB-INF/classes/conf/logback/logback.xml</LOG_CONFIG_LOCATION>
+            </systemProperties>
+          </container>
+          <configuration>
+            <properties>
+              <cargo.servlet.port>${cargo.server.port}</cargo.servlet.port>
+              <cargo.tomcat.ajp.port>${cargo.ajp.port}</cargo.tomcat.ajp.port>
+              <cargo.rmi.port>${cargo.rmi.port}</cargo.rmi.port>
+            </properties>
+          </configuration>
+          <deployables>
+            <deployable>
+              <groupId>daniel.imre.training.tdd.webservice</groupId>
+              <artifactId>web</artifactId>
+              <type>war</type>
+              <properties>
+                <context>ROOT</context>
+              </properties>
+            </deployable>
+          </deployables>
+        </configuration>
+        <executions>
+          <execution>
+            <id>cargo-run</id>
+            <phase>verify</phase>
+            <configuration>
+              <skip>${skip.cargo.run}</skip>
+            </configuration>
+            <goals>
+              <goal>run</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
     <resources>
       <resource>

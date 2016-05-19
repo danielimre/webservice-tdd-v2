@@ -17,3 +17,8 @@ Build project, run tests:
 ```
    mvn verify
 ```
+
+Build project, run tests, start Tomcat and deploy app at `localhost:9876`
+```
+   mvn verify -P runapp
+```
