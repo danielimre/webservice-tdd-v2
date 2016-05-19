@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+    <layout class="ch.qos.logback.classic.PatternLayout">
+      <Pattern>%d{ISO8601} [%-4t] %-5p %c{50} - %m%n</Pattern>
+    </layout>
+  </appender>
+  <appender name="MAINLOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <immediateFlush>true</immediateFlush>
+    <append>true</append>
+    <file>${catalina.base}/logs/webservice_tdd.log</file>
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <Pattern>%d{ISO8601} [%-4t] %-5p %c - %m%n</Pattern>
+    </encoder>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <FileNamePattern>${catalina.base}/logs/webservice_tdd.log.%d{yyyy-MM-dd}</FileNamePattern>
+    </rollingPolicy>
+  </appender>
+  <logger name="org.springframework" level="WARN" />
+  <root level="INFO">
+    <appender-ref ref="CONSOLE" />
+    <appender-ref ref="MAINLOG" />
+  </root>
+  <jmxConfigurator contextName="WebServiceTDD" />
+</configuration>

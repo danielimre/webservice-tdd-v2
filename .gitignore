@@ -1,0 +1,15 @@
+/build.properties
+MANIFEST.MF
+target
+bin
+/build/downloads
+.project
+.settings
+.checkstyle
+.classpath
+WebContent
+test-output
+*.orig
+.idea
+*.iml
+.DS_Store
