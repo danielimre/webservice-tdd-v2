@@ -12,7 +12,6 @@
   <description>WebService TDD example client</description>
   <properties>
     <main.basedir>${project.parent.basedir}</main.basedir>
-    <jacoco.methodRatio>0.76</jacoco.methodRatio>
   </properties>
   <dependencies>
     <dependency>
@@ -22,6 +21,22 @@
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-context</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-web</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-annotations</artifactId>
     </dependency>
     <dependency>
       <groupId>com.google.guava</groupId>

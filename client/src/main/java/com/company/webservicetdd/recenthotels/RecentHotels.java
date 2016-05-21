@@ -14,6 +14,7 @@ import com.google.common.collect.ImmutableList;
  * @author Daniel_Imre
  */
 public class RecentHotels {
+    private static final RecentHotels EMPTY = new RecentHotels(ImmutableList.of());
     private final List<RecentHotel> hotels;
 
     public RecentHotels(List<RecentHotel> hotels) {
@@ -22,6 +23,10 @@ public class RecentHotels {
 
     public List<RecentHotel> getHotels() {
         return hotels;
+    }
+
+    public static RecentHotels empty() {
+        return EMPTY;
     }
 
     @Override
