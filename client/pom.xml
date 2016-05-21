@@ -12,6 +12,7 @@
   <description>WebService TDD example client</description>
   <properties>
     <main.basedir>${project.parent.basedir}</main.basedir>
+    <jacoco.methodRatio>0.76</jacoco.methodRatio>
   </properties>
   <dependencies>
     <dependency>
@@ -21,6 +22,10 @@
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-context</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava-testlib</artifactId>
     </dependency>
   </dependencies>
 </project>

@@ -29,12 +29,12 @@
     <checkstyle.suppressions.location>${main.basedir}/build/checkstyle_suppressions.xml</checkstyle.suppressions.location>
     <!-- jacoco -->
     <jacoco.skip>false</jacoco.skip>
-    <jacoco.branchRatio>0.8</jacoco.branchRatio>
-    <jacoco.classRatio>0.8</jacoco.classRatio>
-    <jacoco.complexityRatio>0.8</jacoco.complexityRatio>
-    <jacoco.instructionRatio>0.8</jacoco.instructionRatio>
-    <jacoco.lineRatio>0.8</jacoco.lineRatio>
-    <jacoco.methodRatio>0.8</jacoco.methodRatio>
+    <jacoco.branchRatio>0.80</jacoco.branchRatio>
+    <jacoco.classRatio>0.80</jacoco.classRatio>
+    <jacoco.complexityRatio>0.80</jacoco.complexityRatio>
+    <jacoco.instructionRatio>0.80</jacoco.instructionRatio>
+    <jacoco.lineRatio>0.80</jacoco.lineRatio>
+    <jacoco.methodRatio>0.80</jacoco.methodRatio>
     <!-- dependency versions -->
     <logback.version>1.1.2</logback.version>
     <slf4j.version>1.7.6</slf4j.version>
@@ -504,6 +504,12 @@
             <artifactId>commons-logging</artifactId>
           </exclusion>
         </exclusions>
+      </dependency>
+      <dependency>
+        <groupId>com.google.guava</groupId>
+        <artifactId>guava-testlib</artifactId>
+        <version>17.0</version>
+        <scope>test</scope>
       </dependency>
     </dependencies>
   </dependencyManagement>
