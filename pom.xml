@@ -90,6 +90,14 @@
               </goals>
             </execution>
           </executions>
+          <dependencies>
+            <dependency>
+              <groupId>com.puppycrawl.tools</groupId>
+              <artifactId>checkstyle</artifactId>
+              <version>6.11.1</version>
+              <scope>compile</scope>
+            </dependency>
+          </dependencies>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -155,7 +163,7 @@
               <append>false</append>
               <log>${project.build.directory}/tomcat7x/cargo.log</log>
               <systemProperties>
-                <LOG_CONFIG_LOCATION>/WEB-INF/classes/conf/logback/logback.xml</LOG_CONFIG_LOCATION>
+                <spring.profiles.active>stub</spring.profiles.active>
               </systemProperties>
             </container>
             <configuration>
@@ -253,6 +261,7 @@
               <haltOnFailure>true</haltOnFailure>
               <excludes>
                 <exclude>**/*Configuration.*</exclude>
+                <exclude>**/Stub*.*</exclude>
               </excludes>
             </configuration>
           </execution>

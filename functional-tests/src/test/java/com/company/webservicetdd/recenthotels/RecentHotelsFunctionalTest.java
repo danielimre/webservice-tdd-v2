@@ -32,4 +32,11 @@ public class RecentHotelsFunctionalTest extends FunctionalTestBase {
 
         assertThat(result, is(new RecentHotels(ImmutableList.of(new RecentHotel(HotelId.of(1L), "hotel1"), new RecentHotel(HotelId.of(2L), "hotel2")))));
     }
+
+    @Test
+    public void shouldReturnOneLocalizedRecentHotelsForUser2() {
+        RecentHotels result = client.getRecentHotels(RecentHotelsParameter.builder().forUser(User.of(2L)).withLocale(Locale.GERMANY).limit(1).build());
+
+        assertThat(result, is(new RecentHotels(ImmutableList.of(new RecentHotel(HotelId.of(4L), "hotel4-de")))));
+    }
 }
