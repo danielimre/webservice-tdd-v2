@@ -5,6 +5,8 @@ import static java.util.Objects.requireNonNull;
 import java.util.List;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.base.MoreObjects;
 import com.google.common.collect.ImmutableList;
 
@@ -17,7 +19,8 @@ public class RecentHotels {
     private static final RecentHotels EMPTY = new RecentHotels(ImmutableList.of());
     private final List<RecentHotel> hotels;
 
-    public RecentHotels(List<RecentHotel> hotels) {
+    @JsonCreator
+    public RecentHotels(@JsonProperty("hotels") List<RecentHotel> hotels) {
         this.hotels = ImmutableList.copyOf(requireNonNull(hotels));
     }
 

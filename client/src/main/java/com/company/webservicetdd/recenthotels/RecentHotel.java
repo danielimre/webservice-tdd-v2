@@ -5,6 +5,8 @@ import static java.util.Objects.requireNonNull;
 import java.util.Objects;
 
 import com.company.webservicetdd.hotel.HotelId;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.base.MoreObjects;
 
 /**
@@ -16,7 +18,8 @@ public class RecentHotel {
     private final HotelId id;
     private final String name;
 
-    public RecentHotel(HotelId id, String name) {
+    @JsonCreator
+    public RecentHotel(@JsonProperty("id") HotelId id, @JsonProperty("name") String name) {
         this.id = requireNonNull(id);
         this.name = requireNonNull(name);
     }

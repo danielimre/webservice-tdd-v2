@@ -2,6 +2,8 @@ package com.company.webservicetdd.hotel;
 
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.base.MoreObjects;
 
 /**
@@ -12,7 +14,8 @@ import com.google.common.base.MoreObjects;
 public final class HotelId {
     private final long id;
 
-    private HotelId(long id) {
+    @JsonCreator
+    private HotelId(@JsonProperty("id") long id) {
         this.id = id;
     }
 

@@ -16,7 +16,7 @@ import com.company.webservicetdd.recenthotels.client.RecentHotelsProviderClient;
  */
 @Configuration
 public class RecentHotelsProviderClientConfiguration {
-    @Value("${WEBSERVICETDD_BASE_URL}/recenthotels")
+    @Value("${WEBSERVICETDD_BASE_URL}/services/recenthotels")
     private URI endpointUri;
 
     @Bean

@@ -7,6 +7,8 @@ import java.util.Locale;
 import java.util.Objects;
 
 import com.company.webservicetdd.user.User;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.base.MoreObjects;
 
 /**
@@ -20,9 +22,15 @@ public final class RecentHotelsParameter {
     private final int limit;
 
     private RecentHotelsParameter(Builder builder) {
-        limit = builder.limit;
-        user = requireNonNull(builder.user);
-        locale = requireNonNull(builder.locale);
+        this(builder.user, builder.locale, builder.limit);
+    }
+
+    @JsonCreator
+    private RecentHotelsParameter(@JsonProperty("user") User user, @JsonProperty("locale") Locale locale, @JsonProperty("limit") int limit) {
+        checkArgument(limit > 0, "limit must be positive");
+        this.limit = limit;
+        this.user = requireNonNull(user);
+        this.locale = requireNonNull(locale);
     }
 
     public int getLimit() {
