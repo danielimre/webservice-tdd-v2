@@ -32,7 +32,7 @@ public class RecentHotelsProviderClient implements RecentHotelsProvider {
         try {
             return restTemplate.postForEntity(endpointUri, parameters, RecentHotels.class).getBody();
         } catch (Exception e) {
-            throw new RecentHotelsClientError("Cannot retrieve recent hotels", e);
+            throw new RecentHotelsClientError("Cannot retrieve recent hotels: " + e.getMessage(), e);
         }
     }
 

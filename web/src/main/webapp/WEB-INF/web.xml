@@ -3,23 +3,15 @@
   <display-name>WebServiceTDD</display-name>
   <context-param>
     <param-name>webAppVersion</param-name>
-    <param-value>WebServiceTDD-1.0</param-value>
+    <param-value>WebServiceTDD-2.0</param-value>
   </context-param>
   <context-param>
     <param-name>webAppRootKey</param-name>
     <param-value>webservicetdd.root</param-value>
   </context-param>
   <context-param>
-    <param-name>logConfigLocation</param-name>
-    <param-value>${LOG_CONFIG_LOCATION}</param-value>
-  </context-param>
-  <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>classpath:conf/spring/web/*.xml</param-value>
-  </context-param>
-  <context-param>
-    <param-name>julBridgeEnabled</param-name>
-    <param-value>true</param-value>
   </context-param>
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
